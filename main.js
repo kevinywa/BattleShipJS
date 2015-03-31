@@ -90,21 +90,24 @@ function addbattleship() {
     } else {grid[battleship.posX][battleship.posY+i] = battleship.symbol};
   };
   writeGrid();
-};function addcruiser() {
+};
+function addcruiser() {
   for (i=0; i<=cruiser.size; i++) {
     if (cruiser.isHorizontal === false) {
       grid[cruiser.posX+i][cruiser.posY] = cruiser.symbol;
     } else {grid[cruiser.posX][cruiser.posY+i] = cruiser.symbol};
   };
   writeGrid();
-};function addsubmarine() {
+};
+function addsubmarine() {
   for (i=0; i<=submarine.size; i++) {
     if (submarine.isHorizontal === false) {
       grid[submarine.posX+i][submarine.posY] = submarine.symbol;
     } else {grid[submarine.posX][submarine.posY+i] = submarine.symbol};
   };
   writeGrid();
-};function adddestroyer() {
+};
+function adddestroyer() {
   for (i=0; i<=destroyer.size; i++) {
     if (destroyer.isHorizontal === false) {
       grid[destroyer.posX+i][destroyer.posY] = destroyer.symbol;
@@ -124,5 +127,13 @@ function randomizeShips() {
     aircraftcarrier.posY = (Math.floor((Math.random() * 4)));
   };
   addaircraftcarrier();
-  if (aircraftcarrier.isHorizontal === true and )//TODO
+    if (Math.floor((Math.random() * 10) + 1) <= 5) {
+      cruiser.isHorizontal = true
+    } else {
+      cruiser.isHorizontal = false
+    };
+    for (i=0; i <= 10 ; i++) {
+
+    }
+  }
 };
