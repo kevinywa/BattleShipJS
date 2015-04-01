@@ -18,7 +18,7 @@ function shuffle(array) {
   }
 
   return array;
-};
+}
 
 var grid = [
   ['o','o','o','o','o','o','o','o','o','o'],
@@ -82,6 +82,50 @@ ships[ships.length] = cruiser;
 ships[ships.length] = submarine;
 ships[ships.length] = destroyer;
 
+function addShip() {
+  for (var x in ships) {
+    for (i=0; i<ships[x].size; i++) {
+      if (ships[x].isHorizontal === false) {
+        grid[(ships[x].posX + i)][ships[x].posY] = ships[x].symbol;
+      } else {
+        grid[ships[x].posX][(ships[x].posY + i)] = ships[x].symbol;
+      }
+    }
+  }
+}
+
+function randomHoriz() {
+  for (var x in ships) {
+    if (Math.random()<0.5) {
+      ships[x].isHorizontal = true;
+    } else {
+      ships[x].isHorizontal = false;
+    }
+  }
+}
+
+function randomPosi() {
+  for (var x in ships) {
+    if (ships[x].isHorizontal === true) {
+      ships[x].posX = getRandomInt(0,9-ships[x].size);
+      ships[x].posY = getRandomInt(0,9);
+    } else {
+      ships[x].posX = getRandomInt(0,9);
+      ships[x].posY = getRandomInt(0,9-ships[x].size);
+    }
+  }
+}
+
+function fixPosi() {
+}
+
+shuffle(ships);
+randomHoriz();
+randomPosi();
+addShip();
+console.log(grid);
+
+
 function writeGrid() {
   document.getElementById('board').innerHTML = grid[0];
   document.getElementById('board').innerHTML += '<br>'+grid[1];
@@ -94,44 +138,3 @@ function writeGrid() {
   document.getElementById('board').innerHTML += '<br>'+grid[8];
   document.getElementById('board').innerHTML += '<br>'+grid[9];
 };
-
-function addShip() {
-  for (x in ships) {
-    for (i=0; i<ships[x].size; i++) {
-      if (ships[x].isHorizontal === false) {
-        grid[(ships[x].posX + i)][ships[x].posY] = ships[x].symbol;
-      } else {
-        grid[ships[x].posX][(ships[x].posY + i)] = ships[x].symbol;
-      };
-    };
-  };
-};
-
-function randomHoriz() {
-  for (x in ships) {
-    if (Math.random()<.5) {
-      ships[x].isHorizontal = true;
-    } else {
-      ships[x].isHorizontal = false;
-    };
-  };
-};
-
-function randomPosi() {
-  for (x in ships) {
-    if (ships[x].isHorizontal === true) {
-      ships[x].posX = getRandomInt(0,9-ships[x].size);
-      ships[x].posY = getRandomInt(0,9);
-    } else {
-      ships[x].posX = getRandomInt(0,9);
-      ships[x].posY = getRandomInt(0,9-ships[x].size);
-    };
-  };
-};
-function fixPosi() {
-};
-shuffle(ships);
-randomHoriz();
-randomPosi();
-addShip();
-console.log(grid);
