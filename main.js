@@ -86,9 +86,9 @@ function addShip() {
   for (var x in ships) {
     for (i=0; i<ships[x].size; i++) {
       if (ships[x].isHorizontal === false) {
-        grid[(ships[x].posX + i)][ships[x].posY] = ships[x].symbol;
+        grid[(ships[x].posY + i)][ships[x].posX] = ships[x].symbol;
       } else {
-        grid[ships[x].posX][(ships[x].posY + i)] = ships[x].symbol;
+        grid[ships[x].posY][(ships[x].posX + i)] = ships[x].symbol;
       }
     }
   }
@@ -107,11 +107,11 @@ function randomHoriz() {
 function randomPosi() {
   for (var x in ships) {
     if (ships[x].isHorizontal === true) {
-      ships[x].posX = getRandomInt(0,9-ships[x].size);
-      ships[x].posY = getRandomInt(0,9);
-    } else {
-      ships[x].posX = getRandomInt(0,9);
       ships[x].posY = getRandomInt(0,9-ships[x].size);
+      ships[x].posX = getRandomInt(0,9);
+    } else {
+      ships[x].posY = getRandomInt(0,9);
+      ships[x].posX = getRandomInt(0,9-ships[x].size);
     }
   }
 }
