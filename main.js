@@ -84,11 +84,11 @@ ships[ships.length] = destroyer;
 
 function addShip() {
   for (var x in ships) {
-    for (i=0; i<ships[x].size; i++) {
+    for (var i=0; i<ships[x].size; i++) {
       if (ships[x].isHorizontal === false) {
-        grid[(ships[x].posY + i)][ships[x].posX] = ships[x].symbol;
+        grid[ships[x].posY + i][ships[x].posX] = ships[x].symbol;
       } else {
-        grid[ships[x].posY][(ships[x].posX + i)] = ships[x].symbol;
+        grid[ships[x].posY][ships[x].posX + i] = ships[x].symbol;
       }
     }
   }
